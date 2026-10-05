@@ -29,7 +29,7 @@ ENV NEXT_TELEMETRY_DISABLED=1
 # `docker build --memory`, so the cap is on Node's heap instead.
 ENV NODE_OPTIONS=--max-old-space-size=1536
 
-ARG NEXT_PUBLIC_SITE_URL=https://factory-board.gapchix.io
+ARG NEXT_PUBLIC_SITE_URL=https://factory-board.ludven.com
 ARG FACTORY_BOARD_UMAMI_ID=
 ARG FACTORY_BOARD_DONATE_URL=
 ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL \

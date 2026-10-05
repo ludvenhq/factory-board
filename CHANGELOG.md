@@ -15,7 +15,9 @@ All notable changes to this project are documented here. The format follows
 - **Copy for Reddit / Discord**: the same problems as Markdown, session name only on request,
   with a select-and-copy fallback when the clipboard is refused.
 - On the demo, a card with the saves folder and a copy button.
-- The hosted copy at [factory-board.gapchix.io](https://factory-board.gapchix.io): a real
+- The hosted copy at [factory-board.ludven.com](https://factory-board.ludven.com) (moved from
+  factory-board.gapchix.io on 2026-10-05, which now redirects there; the repository moved to
+  `ludvenhq/factory-board`): a real
   recipe book baked from outside the repository
   ([ADR 38](docs/adr/0038-the-hosted-copy-ships-a-recipe-book.md)), an anonymous visit
   counter ([ADR 37](docs/adr/0037-the-hosted-copy-counts-visits.md)), a CSP that allows

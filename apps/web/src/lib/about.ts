@@ -7,7 +7,7 @@ import { version } from '../../package.json';
  */
 export const APP_VERSION: string = version;
 
-export const REPO_URL = 'https://github.com/gapchix/factory-board';
+export const REPO_URL = 'https://github.com/ludvenhq/factory-board';
 
 /** Where Steam and Epic both keep saves, in the form Explorer's address bar takes. */
 export const WHERE_SAVES_ARE = '%LOCALAPPDATA%\\FactoryGame\\Saved\\SaveGames';
@@ -20,7 +20,7 @@ const MAX_MESSAGE_CHARS = 2000;
  * build time so a fork or a staging copy does not advertise this one.
  */
 export const SITE_URL: string =
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://factory-board.gapchix.io';
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://factory-board.ludven.com';
 
 /**
  * A prefilled bug report.

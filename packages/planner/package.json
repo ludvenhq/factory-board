@@ -17,11 +17,11 @@
   "author": "Vladislav Gapchinsky (https://gapchix.io)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gapchix/factory-board.git",
+    "url": "git+https://github.com/ludvenhq/factory-board.git",
     "directory": "packages/planner"
   },
-  "bugs": "https://github.com/gapchix/factory-board/issues",
-  "homepage": "https://github.com/gapchix/factory-board/tree/main/packages/planner#readme",
+  "bugs": "https://github.com/ludvenhq/factory-board/issues",
+  "homepage": "https://github.com/ludvenhq/factory-board/tree/main/packages/planner#readme",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

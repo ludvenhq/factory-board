@@ -9,7 +9,7 @@ both, and puts them side by side: **plan vs. actual**, per production line.
 Drop a `.sav` in and it tells you which lines are starving, how far off your plan you are,
 and what to build next. Your save is parsed in the browser and never leaves your machine.
 
-**Try it: [factory-board.gapchix.io](https://factory-board.gapchix.io)** — drop your save on
+**Try it: [factory-board.ludven.com](https://factory-board.ludven.com)** — drop your save on
 the page. Saves are in `%LOCALAPPDATA%\FactoryGame\Saved\SaveGames`.
 
 > **Status:** usable. Five views, a demo base for anyone without the game, and the top of the
@@ -106,7 +106,7 @@ show you — your session name and play time included. Set `NEXT_PUBLIC_SITE_URL
 address the copy will live at, so links and previews point there. Visitors bring their
 own save, and it never leaves their browser.
 
-The deployed copy at factory-board.gapchix.io adds two things:
+The deployed copy at factory-board.ludven.com adds three things:
 
 - **A real recipe book**, from `FACTORY_BOARD_BOOK=/path/to/game-database.json`, so a
   visitor only has to drop their save. The file is an extract kept on the server, never
