@@ -106,7 +106,7 @@ show you — your session name and play time included. Set `NEXT_PUBLIC_SITE_URL
 address the copy will live at, so links and previews point there. Visitors bring their
 own save, and it never leaves their browser.
 
-The deployed copy at factory-board.ludven.com adds three things:
+The deployed copy at factory-board.ludven.com adds a few things:
 
 - **A real recipe book**, from `FACTORY_BOARD_BOOK=/path/to/game-database.json`, so a
   visitor only has to drop their save. The file is an extract kept on the server, never
@@ -116,6 +116,12 @@ The deployed copy at factory-board.ludven.com adds three things:
   opened or the diagnosis was copied. No file names, no session names, nothing from the
   save ([ADR 37](docs/adr/0037-the-hosted-copy-counts-visits.md)).
 - **A donate link**, with `FACTORY_BOARD_DONATE_URL`, in the footer. Nothing is behind it.
+- **The studio's pages**, with `FACTORY_BOARD_STUDIO_URL` (e.g. `https://ludven.com`): the
+  footer's "A Ludven app" becomes a link, beside Support and Privacy. Unset, the studio is
+  named and nothing links to it.
+- **Where the counter lives**, with `FACTORY_BOARD_UMAMI_HOST` (default
+  `https://stats.gapchix.io`). The Dockerfile writes the same origin into the
+  Content-Security-Policy, so the page can reach that counter and no other.
 
 ## Why extract instead of ship the data?
 

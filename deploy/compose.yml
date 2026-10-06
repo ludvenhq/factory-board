@@ -13,6 +13,8 @@ services:
       args:
         FACTORY_BOARD_UMAMI_ID: ${FACTORY_BOARD_UMAMI_ID:-}
         FACTORY_BOARD_DONATE_URL: ${FACTORY_BOARD_DONATE_URL:-}
+        FACTORY_BOARD_UMAMI_HOST: ${FACTORY_BOARD_UMAMI_HOST:-https://stats.gapchix.io}
+        FACTORY_BOARD_STUDIO_URL: ${FACTORY_BOARD_STUDIO_URL:-}
       secrets:
         - book
     container_name: factory-board

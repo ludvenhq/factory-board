@@ -90,9 +90,9 @@ export function YourSave() {
         What is wrong with your base?
       </Heading>
       <Text fontSize="14px" color="fg.muted" maxW="72ch" mb={3}>
-        Everything below is a demo base. Drop your own save anywhere on this page and the board
-        reads it in this tab and tells you which lines are slow, why, and what to fix first. Nothing
-        is uploaded.
+        Everything below is a demo base. Drop your own Satisfactory save anywhere on this page and
+        the board reads it in this tab and tells you which lines are slow, why, and what to fix
+        first. Nothing is uploaded.
       </Text>
       <Flex gap={2} align="center" wrap="wrap">
         <Label color="fg" flex="none">

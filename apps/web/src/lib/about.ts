@@ -22,6 +22,63 @@ const MAX_MESSAGE_CHARS = 2000;
 export const SITE_URL: string =
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://factory-board.ludven.com';
 
+/** The sentence the product is, in the words a player would search for it. */
+export const SITE_TITLE = 'Factory Board: Satisfactory save analyzer and planner';
+export const SITE_DESCRIPTION =
+  'Drop a Satisfactory save and see which lines are slow, why, and what to fix first, plus a planner checked against your real base. Free, in your browser.';
+
+/** Each view's own title and description, for its tab, its search result and the sitemap. */
+export const VIEWS = {
+  '/base': {
+    title: 'Base map',
+    description:
+      'Every building in your Satisfactory save drawn at its real size and place, grouped into zones and coloured by uptime. Read in your browser, never uploaded.',
+  },
+  '/plan': {
+    title: 'Planner',
+    description:
+      'Plan a Satisfactory production target and check it against your base: machines to build, power, belts, and what to build first.',
+  },
+  '/progress': {
+    title: 'Progression',
+    description:
+      'Milestones researched and Space Elevator parts delivered, read straight out of your Satisfactory save, with what each phase still needs.',
+  },
+  '/history': {
+    title: 'History',
+    description:
+      'Every autosave of a Satisfactory session kept in your browser: machines, power, uptime and the Space Elevator burn-down over time.',
+  },
+} as const;
+
+export type ViewPath = keyof typeof VIEWS;
+
+/** A view's metadata, with its own canonical address (a root canonical would point every view home). */
+export function viewMetadata(path: ViewPath) {
+  const { title, description } = VIEWS[path];
+  return {
+    title,
+    description,
+    alternates: { canonical: path },
+    openGraph: { title: `${title} · Factory Board`, description, url: path },
+  };
+}
+
+/**
+ * The studio's site, set at build once it answers (the hosted build only). While it is unset the
+ * footer names the studio without linking it, so the page never sends anyone to a dead domain.
+ * Read at build by server components only: the client bundle does not carry it.
+ */
+export function studioUrl(): string | null {
+  return process.env.FACTORY_BOARD_STUDIO_URL?.replace(/\/$/, '') || null;
+}
+
+/** Where the visit counter lives (ADR 37). Moves to the studio's own Umami with one build arg. */
+export const UMAMI_HOST_DEFAULT = 'https://stats.gapchix.io';
+export function umamiHost(): string {
+  return process.env.FACTORY_BOARD_UMAMI_HOST?.replace(/\/$/, '') || UMAMI_HOST_DEFAULT;
+}
+
 /**
  * A prefilled bug report.
  *

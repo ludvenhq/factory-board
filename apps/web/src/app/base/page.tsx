@@ -377,7 +377,7 @@ export default function BasePage() {
   if (!snapshot || !board) {
     return (
       <>
-        <SectionHeading title="Base" note="no save loaded" />
+        <SectionHeading as="h1" title="Base" note="no save loaded" />
         <SaveDropzone />
         <Text color="fg.muted" fontSize="14px" mt={4} maxW="68ch">
           Every building in a save carries its position. Load one and the base is drawn from those
@@ -413,7 +413,11 @@ export default function BasePage() {
 
   return (
     <>
-      <SectionHeading title="Base" note={`${snapshot.sessionName} · ${board.spread} of ground`} />
+      <SectionHeading
+        as="h1"
+        title="Base"
+        note={`${snapshot.sessionName} · ${board.spread} of ground`}
+      />
 
       <StatRow>
         <StatTile

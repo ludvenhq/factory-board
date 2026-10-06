@@ -32,13 +32,22 @@ ENV NODE_OPTIONS=--max-old-space-size=1536
 ARG NEXT_PUBLIC_SITE_URL=https://factory-board.ludven.com
 ARG FACTORY_BOARD_UMAMI_ID=
 ARG FACTORY_BOARD_DONATE_URL=
+ARG FACTORY_BOARD_UMAMI_HOST=https://stats.gapchix.io
+# The studio's site, once it answers: the footer links its app, support and privacy pages.
+ARG FACTORY_BOARD_STUDIO_URL=
 ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL \
     FACTORY_BOARD_UMAMI_ID=$FACTORY_BOARD_UMAMI_ID \
-    FACTORY_BOARD_DONATE_URL=$FACTORY_BOARD_DONATE_URL
+    FACTORY_BOARD_DONATE_URL=$FACTORY_BOARD_DONATE_URL \
+    FACTORY_BOARD_UMAMI_HOST=$FACTORY_BOARD_UMAMI_HOST \
+    FACTORY_BOARD_STUDIO_URL=$FACTORY_BOARD_STUDIO_URL
 
 RUN --mount=type=secret,id=book,required=true \
     FACTORY_BOARD_BOOK=/run/secrets/book npm run build
 
 FROM nginx:1.29-alpine
+ARG FACTORY_BOARD_UMAMI_HOST=https://stats.gapchix.io
 COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
+# The policy allows the counter the page was built to load, and no other.
+RUN sed -i "s#__UMAMI_HOST__#${FACTORY_BOARD_UMAMI_HOST}#g" /etc/nginx/conf.d/default.conf \
+    && ! grep -q __UMAMI_HOST__ /etc/nginx/conf.d/default.conf
 COPY --from=build /app/apps/web/out /usr/share/nginx/html

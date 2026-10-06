@@ -28,7 +28,7 @@ export default function ProgressPage() {
   if (!snapshot) {
     return (
       <>
-        <SectionHeading title="Progression" note="no save loaded" />
+        <SectionHeading as="h1" title="Progression" note="no save loaded" />
         <SaveDropzone />
         <Text color="fg.muted" fontSize="14px" mt={4} maxW="68ch">
           Milestone research and Space Elevator delivery are read straight out of the save.
@@ -39,7 +39,7 @@ export default function ProgressPage() {
 
   return (
     <>
-      <SectionHeading title="Research by tier" note="milestones unlocked" />
+      <SectionHeading as="h1" title="Research by tier" note="milestones unlocked" />
       <ChartFrame title="Tier completion" note="researched / available">
         {tiers.map(([tier, row]) => (
           <MeterRow

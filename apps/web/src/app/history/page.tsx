@@ -130,7 +130,7 @@ export default function HistoryPage() {
   if (!snapshot && points.length === 0) {
     return (
       <>
-        <SectionHeading title="History" note="no save loaded" />
+        <SectionHeading as="h1" title="History" note="no save loaded" />
         <SaveDropzone />
         <Text color="fg.muted" fontSize="14px" mt={4} maxW="68ch">
           The game keeps three rotating autosave slots, so what happened an hour ago is already
@@ -146,6 +146,7 @@ export default function HistoryPage() {
   return (
     <>
       <SectionHeading
+        as="h1"
         title="History"
         note={
           showing

@@ -1,5 +1,5 @@
 import Script from 'next/script';
-import { SITE_URL } from '@/lib/about';
+import { SITE_URL, umamiHost } from '@/lib/about';
 
 /**
  * The hosted copy's visit counter, and nothing on any other build.
@@ -16,7 +16,7 @@ export function Analytics() {
   if (!websiteId) return null;
   return (
     <Script
-      src="https://stats.gapchix.io/script.js"
+      src={`${umamiHost()}/script.js`}
       data-website-id={websiteId}
       data-domains={new URL(SITE_URL).hostname}
       strategy="afterInteractive"

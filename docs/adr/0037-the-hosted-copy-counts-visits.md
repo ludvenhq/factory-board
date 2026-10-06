@@ -59,3 +59,12 @@ Nothing else leaves the page.**
   than taken on trust.
 - If the launch parks the project, the ID is unset at the next build and the counter
   goes with it.
+
+## Addendum, 2026-10-06: the counter can move
+
+Factory Board is now the Ludven studio's, and the studio will run its own Umami. The
+counter's origin is a build arg, `FACTORY_BOARD_UMAMI_HOST` (default
+`https://stats.gapchix.io`). The page's script tag and the Content-Security-Policy are both
+built from it (`deploy/nginx.conf` holds a placeholder the Dockerfile fills in, and the
+image build fails if one is left), so the policy still allows exactly one counter: the one
+the page loads. Moving is a new website ID and this arg, one rebuild; nothing else changes.

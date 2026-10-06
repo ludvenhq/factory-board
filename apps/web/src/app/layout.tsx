@@ -6,7 +6,8 @@ import { Analytics } from '@/components/analytics';
 import { DropAnywhere } from '@/components/drop-anywhere';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
-import { SITE_URL } from '@/lib/about';
+import { StructuredData } from '@/components/structured-data';
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '@/lib/about';
 import { Providers } from './providers';
 
 const display = Saira_Condensed({
@@ -30,22 +31,20 @@ const mono = IBM_Plex_Mono({
   display: 'swap',
 });
 
-const DESCRIPTION =
-  'Plan a Satisfactory factory, then check it against your actual save file. Everything runs in your browser.';
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: 'Factory Board', template: '%s · Factory Board' },
-  description: DESCRIPTION,
+  title: { default: SITE_TITLE, template: '%s · Factory Board' },
+  description: SITE_DESCRIPTION,
+  applicationName: 'Factory Board',
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     siteName: 'Factory Board',
-    title: 'Factory Board',
-    description: DESCRIPTION,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     url: '/',
   },
-  twitter: { card: 'summary_large_image', title: 'Factory Board', description: DESCRIPTION },
+  twitter: { card: 'summary_large_image', title: SITE_TITLE, description: SITE_DESCRIPTION },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -65,6 +64,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Footer />
         </Providers>
         <Analytics />
+        <StructuredData />
       </body>
     </html>
   );

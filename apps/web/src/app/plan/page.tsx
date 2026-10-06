@@ -122,7 +122,11 @@ export default function PlanPage() {
   return (
     <>
       <Box as="section" mb={9}>
-        <SectionHeading title="Production targets" note="what you want the factory to make" />
+        <SectionHeading
+          as="h1"
+          title="Production targets"
+          note="what you want the factory to make"
+        />
         <PhaseProposal db={db} />
         <TargetEditor db={db} />
       </Box>

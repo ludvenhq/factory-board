@@ -28,15 +28,18 @@ export function SectionHeading({
   title,
   note,
   controls,
+  as = 'h2',
 }: {
   title: string;
   note?: string;
   controls?: ReactNode;
+  /** The first heading of a view is its page title, so it is the page's one h1. */
+  as?: 'h1' | 'h2';
 }) {
   return (
     <Flex align="baseline" gap={4} mb={3} wrap="wrap">
       <Heading
-        as="h2"
+        as={as}
         fontFamily="heading"
         fontWeight="600"
         fontSize="25px"

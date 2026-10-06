@@ -8,6 +8,14 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
+- **Search engines read it as what it is.** A title and description in the words players
+  search with, one per view; one h1 per view; a sitemap of the five views, named in
+  robots.txt; the app described as a free `WebApplication` in JSON-LD. Pinned by
+  `e2e/seo.spec.ts`.
+- **A Ludven app.** The footer names the studio, and links its app, support and privacy
+  pages once `FACTORY_BOARD_STUDIO_URL` is set. The packages' author is Ludven.
+- `FACTORY_BOARD_UMAMI_HOST` moves the visit counter, and the CSP with it (ADR 37's
+  addendum).
 - **Fix these first.** The Overview opens with up to three problems, one per cause, each
   with what the save shows and what to try: the next carrier tier of the same kind, the
   line that makes a missing ingredient, the box already holding it, or the megawatts a

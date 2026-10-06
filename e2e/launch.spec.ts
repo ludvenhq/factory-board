@@ -74,7 +74,7 @@ test('a blocked or broken counter never stops a file loading', async ({ page }) 
    * `track()` runs inside every drop handler. Its host is refused, and a
    * counter that throws is planted anyway, so both ways it can fail are live.
    */
-  await page.route(/stats\.gapchix\.io/, (route) => route.abort());
+  await page.route(/stats\.(gapchix\.io|ludven\.com)/, (route) => route.abort());
   await page.addInitScript(() => {
     (window as unknown as { umami: unknown }).umami = {
       track: () => {

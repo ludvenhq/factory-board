@@ -238,7 +238,7 @@ export default function OverviewPage() {
   if (!snapshot || !view) {
     return (
       <>
-        <SectionHeading title="Overview" note="no save loaded" />
+        <SectionHeading as="h1" title="Overview" note="no save loaded" />
         <SaveDropzone />
         <Text color="fg.muted" fontSize="14px" mt={4} maxW="68ch">
           {process.env.NODE_ENV === 'development'
@@ -256,6 +256,7 @@ export default function OverviewPage() {
   return (
     <>
       <SectionHeading
+        as="h1"
         title="Overview"
         note={`${snapshot.sessionName} · ${playTime(snapshot.playDurationSeconds)} played`}
       />
