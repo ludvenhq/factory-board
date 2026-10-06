@@ -222,10 +222,36 @@ export function demoSnapshot(db: GameDatabase = demoDatabase): DemoSnapshot {
       circuit: 0,
     },
 
-    /* Somewhere to keep it all, and somewhere to hand it in. */
-    { machine: 'StorageContainerMk1', x: 46, y: -30, z: 0, facing: 0 },
-    { machine: 'StorageContainerMk1', x: 46, y: -16, z: 0, facing: 0 },
-    { machine: 'StorageContainerMk1', x: 96, y: 34, z: 0, facing: 0 },
+    /*
+     * Somewhere to keep it all, and somewhere to hand it in. Each box says what
+     * is in it, as a real save does (ADR 33): without that, "find the box" on
+     * the demo had nowhere to fly, and every stranger's first click on it did
+     * nothing. The three add up to `stored` below; a test holds them to it.
+     */
+    {
+      machine: 'StorageContainerMk1',
+      x: 46,
+      y: -30,
+      z: 0,
+      facing: 0,
+      holding: { Desc_IronRod_C: 2400, Desc_IronPlate_C: 210 },
+    },
+    {
+      machine: 'StorageContainerMk1',
+      x: 46,
+      y: -16,
+      z: 0,
+      facing: 0,
+      holding: { Desc_Wire_C: 900, Desc_IronScrew_C: 640 },
+    },
+    {
+      machine: 'StorageContainerMk1',
+      x: 96,
+      y: 34,
+      z: 0,
+      facing: 0,
+      holding: { Desc_Cement_C: 120, Desc_Rotor_C: 18, Desc_SpaceElevatorPart_1_C: 12 },
+    },
     { machine: 'TradingPost', x: 160, y: 60, z: 0, facing: 0 },
   ];
 

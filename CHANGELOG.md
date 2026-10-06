@@ -6,6 +6,14 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Fixed
+
+- **"Find the box" goes somewhere.** The Overview link is a client-side navigation and the
+  base page read `?holding=` before Next wrote the new address, so the click never flew; only
+  a typed URL did. Read after mount now, and the map heading says which box it is showing.
+  The demo base's three containers also say what they hold (they add up to its warehouse,
+  pinned by a test), so the link works on the page every stranger opens first.
+
 ### Added
 
 - **Search engines read it as what it is.** A title and description in the words players

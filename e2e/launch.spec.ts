@@ -87,3 +87,15 @@ test('a blocked or broken counter never stops a file loading', async ({ page }) 
   await expect(page.getByTestId('status-strip')).toContainText('docs-mini.json · 2');
   await page.getByRole('button', { name: 'Forget' }).click();
 });
+
+test('"find the box" on the Overview flies the map to the box', async ({ page }) => {
+  /*
+   * A client-side navigation: the base page used to read ?holding= before Next
+   * had written the new address, so the click went nowhere and only a typed
+   * URL flew (2026-10-06). The map is a canvas, so the heading says it.
+   */
+  await openDemo(page);
+  await page.getByRole('link', { name: 'find the box' }).nth(1).click();
+  await expect(page).toHaveURL(/\/base\?holding=Desc_Wire_C$/);
+  await expect(page.getByText('showing the box with the most Wire')).toBeVisible();
+});

@@ -101,6 +101,21 @@ describe('the demo save', () => {
    * figure is what its generators can give *now*. The demo claimed 90 MW off
    * three burners with one of them empty — a state the game cannot be in.
    */
+  /*
+   * "Find the box" flies to the fullest container holding an item. The demo's
+   * boxes once held nothing, so on the page every stranger opens first the
+   * link went nowhere. The boxes and the warehouse total must agree.
+   */
+  it('keeps every stored item in a box, and the boxes add up to what is stored', () => {
+    const inBoxes: Record<string, number> = {};
+    for (const placement of snapshot.placements) {
+      for (const [item, count] of Object.entries(placement.holding ?? {})) {
+        inBoxes[item] = (inBoxes[item] ?? 0) + count;
+      }
+    }
+    expect(inBoxes).toEqual(snapshot.stored);
+  });
+
   it('only counts the generators that are burning towards a grid’s capacity', () => {
     for (const circuit of snapshot.circuits) {
       const burning = circuit.members

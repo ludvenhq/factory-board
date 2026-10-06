@@ -2,7 +2,7 @@
 
 import { Box, chakra, Flex, Grid, Text } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
-import { useCallback, useMemo, useRef, useState, type KeyboardEvent } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { BarRow, ChartFrame, MeterRow, StatRow, StatTile, uptimeTone } from '@/components/charts';
 import { SaveDropzone } from '@/components/panels';
 import { Field, Label, Mono, SectionHeading } from '@/components/primitives';
@@ -290,12 +290,16 @@ export default function BasePage() {
    * The other half of *"2,029 Wire sitting in a container"* — the sentence the
    * diagnosis has been able to write since it learned to look in the
    * warehouse, without ever being able to say which container.
+   *
+   * Read in an effect, not a state initializer like the zone above: the
+   * Overview's "find the box" is a client-side navigation, and Next renders the
+   * new page before it writes the new address, so an initializer read the old
+   * one and the link went nowhere. Only a typed or reloaded URL ever flew.
    */
-  const [findItem] = useState<string | null>(() =>
-    typeof window === 'undefined'
-      ? null
-      : new URLSearchParams(window.location.search).get('holding'),
-  );
+  const [findItem, setFindItem] = useState<string | null>(null);
+  useEffect(() => {
+    setFindItem(new URLSearchParams(window.location.search).get('holding'));
+  }, []);
   const [editingZoneId, setEditingZoneId] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const mapRef = useRef<HTMLDivElement>(null);
@@ -441,7 +445,11 @@ export default function BasePage() {
       <Box mt={9} ref={mapRef}>
         <SectionHeading
           title="The map"
-          note="every building at its real size and angle · coloured by uptime"
+          note={
+            findItem && focusIndex !== null
+              ? `showing the box with the most ${itemName(db, findItem)}`
+              : 'every building at its real size and angle · coloured by uptime'
+          }
         />
 
         <FactoryMap
